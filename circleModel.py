@@ -21,7 +21,7 @@ class ModelTrainer:
     def __init__(self,model,epoch):
         self.model=model
         self.loss_func=torch.nn.BCEWithLogitsLoss()
-        self.optimizer=torch.optim.Adam(params=self.model.parameters(),lr=0.001)
+        self.optimizer=torch.optim.Adam(params=self.model.parameters(),lr=0.01)
         self.epochs=epoch
         self.device='cuda' if torch.cuda.is_available() else 'cpu'
         x,y= make_circles(1000,
@@ -76,6 +76,6 @@ class ModelTrainer:
     
 if __name__ == '__main__':
     model=circleModel()
-    trainer=ModelTrainer(model,1000)
+    trainer=ModelTrainer(model,100)
     trainer.main()
 
